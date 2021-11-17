@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../TomAndJerry/tomandjerry.h"
+#include "C:/Users/kero6/Downloads/Tom-And-Jerry-main (2)/Tom-And-Jerry-main/TomAndJerry/tomandjerry.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)

@@ -1,4 +1,3 @@
-
 #include <QApplication>
 #include<QGraphicsView>
 #include <QGraphicsScene>
@@ -6,6 +5,8 @@
 #include<QDir>
 #include<QFile>
 #include<QTextStream>
+
+#include <jerry.h>
 int main(int argc, char *argv[])
 {
 
@@ -21,7 +22,7 @@ int main(int argc, char *argv[])
     //QDir::setCurrent("E:/Fall 2021/CSCS II/Project");
 
     int board[10][10];
-    QFile file("board.txt");
+    QFile file("sources/board.txt");
     file.open(QIODevice::ReadOnly);
     QTextStream stream (&file);
 
@@ -37,10 +38,10 @@ int main(int argc, char *argv[])
 
     }
 
-    QPixmap bricksImage("Bricks.png");
+    QPixmap bricksImage("sources/Bricks.png");
     bricksImage=bricksImage.scaledToWidth(50);
     bricksImage=bricksImage.scaledToHeight(50);
-    QPixmap grassImage("Grass.png");
+    QPixmap grassImage("sources/Grass.png");
     grassImage=grassImage.scaledToWidth(50);
     grassImage=grassImage.scaledToHeight(50);
 
@@ -62,9 +63,11 @@ int main(int argc, char *argv[])
     }
 
 
+    Jerry jerry(board);
+Scene.addItem(&jerry);
 
-
-
+jerry.setFlag(QGraphicsPixmapItem::ItemIsFocusable);
+jerry.setFocus();
 
     view.show();
     view.setScene(&Scene);
