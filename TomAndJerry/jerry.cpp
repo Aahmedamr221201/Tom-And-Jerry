@@ -3,10 +3,10 @@
 Jerry::Jerry(int board[10][10])
 {
     //set image and size
-    QPixmap image("sources/Jerry.png");
-    image = image.scaledToWidth(50);
-    image = image.scaledToWidth(50);
-    setPixmap(image);
+    QPixmap Jerryimage("sources/Jerry.png");
+    Jerryimage = Jerryimage.scaledToWidth(50);
+    Jerryimage = Jerryimage.scaledToWidth(50);
+    setPixmap(Jerryimage);
 
     //set positon
     row =1;
