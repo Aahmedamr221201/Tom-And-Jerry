@@ -1,4 +1,3 @@
-
 #include <QApplication>
 #include<QGraphicsView>
 #include <QGraphicsScene>
@@ -6,6 +5,8 @@
 #include<QDir>
 #include<QFile>
 #include<QTextStream>
+#include <QDebug>
+#include <jerry.h>
 int main(int argc, char *argv[])
 {
 
@@ -20,8 +21,11 @@ int main(int argc, char *argv[])
     view.setBackgroundBrush(brush);
     //QDir::setCurrent("E:/Fall 2021/CSCS II/Project");
 
-    int board[10][10];
-    QFile file("board.txt");
+    int** board;
+    board = new int*[10];
+    for(int i = 0; i < 10; i++)
+       board[i] = new int[10];
+    QFile file("sources/board.txt");
     file.open(QIODevice::ReadOnly);
     QTextStream stream (&file);
 
@@ -37,10 +41,20 @@ int main(int argc, char *argv[])
 
     }
 
-    QPixmap bricksImage("Bricks.png");
+//    QString debugStr;
+//    for(int i=0;i<10;i++)
+//    {
+//        for(int j=0;j<10;j++)
+//        {
+//            debugStr += QString::number(board[i][j]) + " ";
+//        }
+//        debugStr += "\n";
+//    }
+//    qDebug() << debugStr;
+    QPixmap bricksImage("sources/Bricks.png");
     bricksImage=bricksImage.scaledToWidth(50);
     bricksImage=bricksImage.scaledToHeight(50);
-    QPixmap grassImage("Grass.png");
+    QPixmap grassImage("sources/Grass.png");
     grassImage=grassImage.scaledToWidth(50);
     grassImage=grassImage.scaledToHeight(50);
 
@@ -62,9 +76,11 @@ int main(int argc, char *argv[])
     }
 
 
+    Jerry jerry(board);
+Scene.addItem(&jerry);
 
-
-
+jerry.setFlag(QGraphicsPixmapItem::ItemIsFocusable);
+jerry.setFocus();
 
     view.show();
     view.setScene(&Scene);
