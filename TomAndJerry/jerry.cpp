@@ -1,6 +1,6 @@
 #include "jerry.h"
 
-Jerry::Jerry(int board[10][10])
+Jerry::Jerry(int** board)
 {
     //set image and size
     QPixmap Jerryimage("sources/Jerry.png");
@@ -13,15 +13,14 @@ Jerry::Jerry(int board[10][10])
     column = 1;
     setPos(50+(50*column),50+(50*row));
 
-   setjerrydata(board);
+    for(int i =0; i<10; i++)
+        for(int j =0; j<10; j++){
+            data[i][j] = board[i][j];
+        }
 }
 
 void Jerry::setjerrydata(int board[10][10]){
 
-    for(int i =0; i<10; i++)
-        for(int j =0; i<10; i++){
-            data[i][j] = board[i][j];
-        }
 
 }
 
@@ -42,5 +41,5 @@ void Jerry:: keyPressEvent(QKeyEvent* event){
            column--;
 
        }
-     setPos(50+(50*column),50+(50*row));
+    setPos(50+(50*column),50+(50*row));
 }

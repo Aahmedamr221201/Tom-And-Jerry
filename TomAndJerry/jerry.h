@@ -10,7 +10,7 @@ class Jerry : public QObject, public QGraphicsPixmapItem
     int row;
     int column;
 public:
-    Jerry(int board[10][10]);
+    Jerry(int** board);
     void setjerrydata(int board[10][10]);
 //public slots:
     void keyPressEvent(QKeyEvent* event);
