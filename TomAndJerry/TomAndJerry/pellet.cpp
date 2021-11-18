@@ -14,5 +14,4 @@ pellet::pellet(int**b)
         for(int j=0;j<10;j++)
             board[i][j]=b[i][j];
 
-
 }
